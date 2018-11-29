@@ -20,8 +20,8 @@ public class TestQueue {
         public void run(){  
             while(true){  
                 int rand = new Random().nextInt(1000);  
-                System.out.println("生产了一个产品："+rand);  
-                System.out.println("等待三秒后运送出去...");  
+                System.out.println(""+rand);  
+                System.out.println("");  
 //                try {  
 //                    TimeUnit.SECONDS.sleep(3);  
 //                } catch (InterruptedException e) {  
@@ -29,7 +29,7 @@ public class TestQueue {
 //                }  
                 try {  
                     queue.put(rand);
-                    System.out.println("队列中put了  " + rand);
+                    System.out.println("" + rand);
                     System.out.println(queue.isEmpty());
                     TimeUnit.SECONDS.sleep(5);
                 } catch (InterruptedException e) {  
@@ -49,7 +49,7 @@ public class TestQueue {
         public void run(){  
             while(true){  
                 try {  
-                    System.out.println("消费了一个产品:"+queue.take());  
+                    System.out.println(""+queue.take());  
                 } catch (InterruptedException e) {  
                     e.printStackTrace();  
                 }  
