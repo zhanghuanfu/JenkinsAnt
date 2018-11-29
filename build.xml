@@ -37,10 +37,10 @@
   <target name="dist" depends="compile"
         description="generate the distribution" >
     <!-- Create the distribution directory -->
-    <mkdir dir="${dist}/lib"/>
+    <mkdir dir="${dist}/jar"/>
  
     <!-- Put everything in ${bin} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/JenkinsAntBuild-${DSTAMP}.jar" basedir="${bin}"/>
+    <jar jarfile="${dist}/jar/JenkinsAntBuild-${DSTAMP}.jar" basedir="${bin}"/>
   </target>
  
   <target name="clean"
