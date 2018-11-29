@@ -1,17 +1,17 @@
-<project name="SMSUtil" default="dist" basedir=".">  <!-- 项目名，default的值是对应下面默认执行的target（任务） -->
+<project name="JenkinsAntBuild" default="dist" basedir=".">  <!-- 项目名，default的值是对应下面默认执行的target（任务） -->
     <description>
-        simple example build file
+        simple example bin file
     </description>
-  <!-- set global properties for this build -->
-  <property name="project" location="SMSUtil"/>
+  <!-- set global properties for this bin -->
+  <property name="project" location="JenkinsAntBuild"/>
   <property name="src" location="${project}/src"/> <!-- 设置变量，指向要编译的java代码的位置 -->
   <property name="lib.dir" location="${project}/lib"/> <!-- 设置变量，指向所依赖的jar包所在的位置 -->
-  <property name="build" location="${project}/build"/> <!-- 设置变量，指向编译后的class文件的位置 -->
+  <property name="bin" location="${project}/bin"/> <!-- 设置变量，指向编译后的class文件的位置 -->
   <property name="dist"  location="${project}/dist"/> <!-- 设置变量，指向编译后生成jar包的位置 -->
  
   <!-- 设置要依赖的jar包规则 -->
   <path id="project.class.path">  
-		<pathelement path="${build}" />  
+		<pathelement path="${bin}" />  
 		<fileset dir="${lib.dir}">  
 			<include name="**/*.jar" />  
 		</fileset>  
@@ -20,14 +20,14 @@
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
-    <!-- Create the build directory structure used by compile -->
-    <mkdir dir="${build}"/>
+    <!-- Create the bin directory structure used by compile -->
+    <mkdir dir="${bin}"/>
   </target>
  
   <target name="compile" depends="init"
         description="compile the source " >
-    <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}" includeantruntime="on" classpath="${lib}">
+    <!-- Compile the java code from ${src} into ${bin} -->
+    <javac srcdir="${src}" destdir="${bin}" includeantruntime="on" classpath="${lib}">
 		<classpath refid="project.class.path" /> <!-- 引入依赖的jar包 -->
 	</javac>
   </target>
@@ -37,14 +37,14 @@
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}/lib"/>
  
-    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/SMSUtil-${DSTAMP}.jar" basedir="${build}"/>  <!-- 配置生成的jar包的路径 -->
+    <!-- Put everything in ${bin} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/JenkinsAntBuild-${DSTAMP}.jar" basedir="${bin}"/>  <!-- 配置生成的jar包的路径 -->
   </target>
  
   <target name="clean"
         description="clean up" >
-    <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build}"/>
+    <!-- Delete the ${bin} and ${dist} directory trees -->
+    <delete dir="${bin}"/>
     <delete dir="${dist}"/>
   </target>
 </project>
