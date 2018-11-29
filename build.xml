@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project name="JenkinsAntBuild" default="dist" basedir=".">  <!-- 项目名，default的值是对应下面默认执行的target（任务） -->
+<project name="JenkinsAntBuild" default="dist" basedir=".">
     <description>
         simple example bin file
     </description>
   <!-- set global properties for this bin -->
   <property name="project" location="D:/jenkins/jenkins138/workspace/JenkinsAntBuild/"/>
-  <property name="src" location="${project}/src"/> <!-- 设置变量，指向要编译的java代码的位置 -->
-  <property name="lib.dir" location="${project}/lib"/> <!-- 设置变量，指向所依赖的jar包所在的位置 -->
-  <property name="bin" location="${project}/bin"/> <!-- 设置变量，指向编译后的class文件的位置 -->
-  <property name="dist"  location="${project}/dist"/> <!-- 设置变量，指向编译后生成jar包的位置 -->
+  <property name="src" location="${project}/src"/>
+  <property name="lib.dir" location="${project}/lib"/>
+  <property name="bin" location="${project}/bin"/>
+  <property name="dist"  location="${project}/dist"/>
  
-  <!-- 设置要依赖的jar包规则 -->
+
   <path id="project.class.path">  
 		<pathelement path="${bin}" />  
 		<fileset dir="${lib.dir}">  
@@ -30,7 +30,7 @@
     <!-- Compile the java code from ${src} into ${bin} -->
     <javac srcdir="${src}" destdir="${bin}" includeantruntime="on" classpath="${lib}">
 	<compilerarg line="-encoding UTF-8 "/>
-		<classpath refid="project.class.path" /> <!-- 引入依赖的jar包 -->
+		<classpath refid="project.class.path" />
 	</javac>
   </target>
  
@@ -40,7 +40,7 @@
     <mkdir dir="${dist}/lib"/>
  
     <!-- Put everything in ${bin} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/lib/JenkinsAntBuild-${DSTAMP}.jar" basedir="${bin}"/>  <!-- 配置生成的jar包的路径 -->
+    <jar jarfile="${dist}/lib/JenkinsAntBuild-${DSTAMP}.jar" basedir="${bin}"/>
   </target>
  
   <target name="clean"
